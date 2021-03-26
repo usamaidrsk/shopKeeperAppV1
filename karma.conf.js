@@ -1,15 +1,21 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+// @ts-ignore
 module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
+      // @ts-ignore
       require('karma-jasmine'),
+      // @ts-ignore
       require('karma-chrome-launcher'),
+      // @ts-ignore
       require('karma-jasmine-html-reporter'),
+      // @ts-ignore
       require('karma-coverage'),
+      // @ts-ignore
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {

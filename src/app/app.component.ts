@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { DBService } from './shared/services/db_service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopKeeperAppV1';
+  constructor(private bdServer: DBService){
+  }
+  ngOnIt(): void {
+  }
 }

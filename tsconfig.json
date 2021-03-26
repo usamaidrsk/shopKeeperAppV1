@@ -19,7 +19,27 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "crypto": [
+        "node_modules/crypto-browserify"
+      ],
+      "stream": [
+        "node_modules/stream-browserify"
+      ],
+      "net": [
+        "node_modules/net"
+      ],
+      "fs": [
+        "node_modules/mysql/lib/protocol/sequences"
+      ],
+      "timers": [
+        "node_modules/timers-browserify"
+      ],
+      "tls": [
+        "node_modules/tls-browserify"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

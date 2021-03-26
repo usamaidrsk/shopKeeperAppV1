@@ -1,55 +1,53 @@
-const {
-    app,
-    BrowserWindow
-  } = require('electron')
-  const url = require("url");
-  const path = require("path");
-  
-  let appWindow
-  
-  function initWindow() {
+const { app, BrowserWindow } = require('electron');
+const url = require('url');
+const path = require('path');
+// @ts-ignore
+let appWindow
+
+function initWindow() {
     appWindow = new BrowserWindow({
-      width: 1000,
-      height: 800,
+      width: 1200,
+      height: 1000,
       webPreferences: {
-        nodeIntegration: true
+        nodeIntegration: true,
+        webSecurity: false
       }
-    })
-  
+    });
+
     // Electron Build Path
-    appWindow.loadFile('/dist/index.html')
 
-    // this is duplicated 
+    // appWindow.loadFile(`file://${__dirname}/dist/index.html`);
 
-    // appWindow.loadURL(
-    //   url.format({
-    //     pathname: path.join(__dirname, `/dist/index.html`),
-    //     protocol: "file:",
-    //     slashes: true
-    //   })
-    // );
-  
+    appWindow.loadURL(
+      url.format({
+        pathname: path.join(__dirname, `/dist/index.html`),
+        protocol: "file:",
+        slashes: true
+      })
+    );
+
     // Initialize the DevTools.
-    appWindow.webContents.openDevTools()
-  
-    appWindow.on('closed', function () {
-      appWindow = null
-    })
+    appWindow.webContents.openDevTools();
+
+    appWindow.on('closed', () => {
+      appWindow = null;
+    });
   }
-  
-  app.on('ready', initWindow)
-  
+
+app.on('ready', initWindow);
+
   // Close when all windows are closed.
-  app.on('window-all-closed', function () {
-  
+app.on('window-all-closed', () => {
+
     // On macOS specific close process
     if (process.platform !== 'darwin') {
-      app.quit()
+      app.quit();
     }
-  })
-  
-  app.on('activate', function () {
+  });
+
+app.on('activate', () => {
+    // @ts-ignore
     if (appWindow === null) {
-      initWindow()
+      initWindow();
     }
-  })
+  });
